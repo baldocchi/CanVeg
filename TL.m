@@ -3,40 +3,46 @@ function [ y ] = TL( Z, input, turb )
 %   Detailed explanation goes here
 
 
-% /*  1/9/2021
+% /*
 %     ****************************************************************
 %        This function gives the variation of T(L) with height
 %     ****************************************************************
 % 
 % 
-%         Adopt scaling values of Raupach that adjust Tl profiles for different
+%         Adopt scaling values of Massman and Weil that adjust Tl profiles for different
 %         canopy strcutures
 % 
-%    TL = k(z-d)/(1.25^2 u*, z> h
-%    TL constant below h
-
-% in future double check Brunet BLM 2020 and Wohlfarhrt
+%   u* Tl/h = A1 * (z-d)/h;  z > h
+% 
+%   u* Tl/h = A1 (1-d/h) gamma_3/ (sigmaw(z)/u*); z <= h
+% 
+%   A1 = A2 (sigmaw(z)/u* gamma_3)^1/2 (1-d/h)^-1/2
+% 
+%   gamma_3 = sigmaw(h)/u*
 % 
 % */
 
-%                             
-
-
-      		
-        if (Z >= 1.5* input.HH)
+%                 // factor of 2 comes from (1 - d/h)^-1/2; (1-0.75)^-1/2  
                 
+
+
+            A1=0.6*sqrt(SIGMA(Z,input, turb)/input.ustar*turb.sigma_h)* 2.;
+
+		
+        if (Z <= input.HH)
+                
+
         
-        y=0.4*(Z-input.DD)/(1.56 * input.ustar);
-       
-            %    y = A1* input.HH*0.25*turb.sigma_h/SIGMA(Z,input, turb);
+%         // The factor 0.25 = 1 - d/h = 1 - 0.75
         
-        else
+                y = A1* input.HH*0.25*turb.sigma_h/SIGMA(Z,input, turb);
+        
+                else
                 
-                    % TL ~ 0.25 h/u*
                 
- 				 y=0.25*input.HH/ input.ustar;
+% 				 // u* Tl/h = A1 * (z-d)/h;  z > h	
 
-              
+                y = A1 * (Z-input.DD)/input.ustar;
         
         end
        
