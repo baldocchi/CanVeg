@@ -96,9 +96,9 @@ close all;
 cd 'c:\users\baldocchi\documents\matlab\canveg'
 
 %VegType='Tule';
-%VegType='Alfalfa';
+VegType='Alfalfa';
 %VegType='DeciduousForest'; 
-VegType='Savanna';
+%VegType='Savanna';
  
 
     
