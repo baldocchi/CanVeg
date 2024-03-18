@@ -89,7 +89,7 @@ sunang= fSunAngle(prm.time_zone,prm.lat_deg, prm.long_deg, met.day, met.hhour);
 	
 %Sum Layers and compute Canopy fluxes weighted for sun/shade fractions
 	
-%Plot and visualize
+%Plot and visualize and compare model runs with flux measurements
 	
 	
 
