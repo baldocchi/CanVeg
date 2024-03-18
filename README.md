@@ -3,7 +3,7 @@ CANVEG is a one-dimensional, multi-layer biosphere-atmosphere gas exchange model
 
 Canveg.m is the main program. It calls specific parameter subroutines for the canopy being studied. Here we call input met files, set up latitude and longitude, set canopy, vegetaion, and soil conditions, etc
 
-Details about the model are in the file Canveg_documentation
+Details about the model are in the file Canveg_documentation_2024.  Details about the application for the test case for alfalfa are given in CanAlfalfaParameterization_2024. To play with the model we also post some input met data, test flux data from eddy covariance measurements and Dij runs from the dispersion matrix.
 
 The architectural flow chart of the code runs as follows.  
 
