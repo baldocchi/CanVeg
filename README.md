@@ -58,6 +58,8 @@ sunang= fSunAngle(prm.time_zone,prm.lat_deg, prm.long_deg, met.day, met.hhour);
 %Computes Radiative transfer for specific wave bands, eg PAR, NIR. If you have spectral information you look at narrow wave bands, SIF, etc
 
 [quantum]=fRadTranCanopy_Matrix(sunang,leafang, quantum,waveband,prm);
+
+[nir]=fRadTranCanopy_Matrix(sunang,leafang, nir,waveband,prm);
 	
 %Start Iteration Loop {…
 
