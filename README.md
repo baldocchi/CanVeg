@@ -57,14 +57,17 @@ sunang= fSunAngle(prm.time_zone,prm.lat_deg, prm.long_deg, met.day, met.hhour);
 %and photosynthesis.  Leaf -air temperature is used to assess whether the boundary layer is affected by convection or free convection.	
 [Sun,Shade]=fEnergy_Carbon_Fluxes_Matrix(Sun, Shade, Qin, quantum, met, prof, prm);
 	
+%Compute Soil Energy balance Fluxes 
 [soil]=fSoilEnergyBalanceMatrix(quantum, nir,ir, met, prof, prm, soil,j);
-	Compute Soil Energy balance Fluxes 
+
+%Compute sources and sink strengths and use them and Dij to compute scalar profiles for air temperature, humidity and CO2.	
 [prof.Tair_K]=fConcMatrix(prof.H,soilflux, prof.delz, Dij,met,met.T_air_K, prm, fact.heatcoef);
-	Compute sources and sink strengths and use them and Dij to compute scalar profiles for air temperature, humidity and CO2.
-End Iteration Loop	
 	
-	Sum Layers and compute Canopy fluxes weighted for sun/shade fractions
-	Plot and visualize
+%End Iteration Loop	
+	
+%Sum Layers and compute Canopy fluxes weighted for sun/shade fractions
+	
+%Plot and visualize
 	
 	
 
